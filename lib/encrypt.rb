@@ -6,6 +6,7 @@ class FileIO
   def initialize(plain, encrypted)
     @plain_message = File.open(ARGV[0]).read
     @encrypted_message = File.open(ARGV[1], "w")
+    #
     @final_text = ""
     key = Key.new
     puts "Created '#{ARGV[1]}' with the key #{key.key} and date #{key.date}"

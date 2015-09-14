@@ -23,4 +23,14 @@ class KeyTest < MiniTest::Test
     assert_equal Time.now.strftime("%d%m%y"), key1.date
   end
 
+  def test_that_we_can_pull_ABCD_positions
+    key1 = Key.new
+    key1.key = "12345"
+    key1.random_abcd_positions
+    assert_equal "12", key1.a_position
+    assert_equal "23", key1.b_position
+    assert_equal "34", key1.c_position
+    assert_equal "45", key1.d_position
+  end
+
 end
