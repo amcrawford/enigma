@@ -1,7 +1,7 @@
 gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
-require '../lib/key'
+require_relative '../lib/key'
 
 class KeyTest < MiniTest::Test
   def test_it_can_generate_random_key_5_digits_long
@@ -29,19 +29,15 @@ class KeyTest < MiniTest::Test
     key1.date = "140915"
     assert_equal "140915", key1.date
     key1.complete_key
-    assert_equal "19", key1.position_hash[:a_rot]
+    assert_equal "19", key1.position_array[0]
   end
 
   def test_that_it_can_calculate_a_full_complete_key
-    skip
     key1 = Key.new
     key1.key = "12345"
     key1.date = "140915"
     key1.complete_key
-    assert_equal "19", key1.a_position
-    assert_equal "25", key1.b_position
-    assert_equal "36", key1.c_position
-    assert_equal "50", key1.d_position
+    assert_equal ["19", "25", "36", "50"], key1.position_array
   end
 
 end
