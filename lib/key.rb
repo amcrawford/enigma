@@ -28,4 +28,3 @@ end
 # key1 = Key.new
 # key1.key = "12345"
 # key1.date = "140915"
-# puts key1.complete_key
