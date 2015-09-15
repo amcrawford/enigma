@@ -4,7 +4,7 @@ class Key
   def initialize
     @key = generate_random_key
     @date = Time.now.strftime("%d%m%y")
-    @position_hash = {a_rot: "", b_rot: "", c_rot: "", d_rot: ""}
+    @position_hash = {}
   end
 
   def generate_random_key
@@ -25,8 +25,8 @@ class Key
 
 end
 
-key1 = Key.new
-key1.key = "12345"
-key1.date = "140915"
-key1.complete_key
-puts key1.position_hash
+# key1 = Key.new
+# key1 = Key.new
+# key1.key = "12345"
+# key1.date = "140915"
+# puts key1.complete_key
