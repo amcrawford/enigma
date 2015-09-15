@@ -29,7 +29,6 @@ class Key
     @position_hash[:b_rot] = (@b_position.to_i + (date_squared[-3]).to_i).to_s
     @position_hash[:c_rot] = (@c_position.to_i + (date_squared[-2]).to_i).to_s
     @position_hash[:d_rot] = (@d_position.to_i + (date_squared[-1]).to_i).to_s
-    @position_hash
   end
 
 end
@@ -38,4 +37,4 @@ key1 = Key.new
 # key1 = Key.new
 # key1.key = "12345"
 # key1.date = "140915"
-puts key1.complete_key 
+puts key1.complete_key
