@@ -28,3 +28,6 @@ end
 # key1 = Key.new
 # key1.key = "12345"
 # key1.date = "140915"
+
+# Update tests
+# Encryption
