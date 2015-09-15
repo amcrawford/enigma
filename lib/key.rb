@@ -4,6 +4,7 @@ class Key
   def initialize
     @key = generate_random_key
     @date = Time.now.strftime("%d%m%y")
+    # @position_array []
     @a_position = ""
     @b_position = ""
     @c_position = ""
@@ -26,11 +27,18 @@ class Key
   end
 
   def complete_key
-      # set ABCD places
     random_abcd_positions
-        # pull from 5 digit
-        # square date
-        # add date last 4 digits
+    date_squared = (@date.to_i * @date.to_i).to_s
+    @a_position = (@a_position.to_i + (date_squared[-4]).to_i).to_s
+    @b_position = (@b_position.to_i + (date_squared[-3]).to_i).to_s
+    @c_position = (@c_position.to_i + (date_squared[-2]).to_i).to_s
+    @d_position = (@d_position.to_i + (date_squared[-1]).to_i).to_s
   end
 
 end
+
+# key1 = Key.new
+# key1 = Key.new
+# key1.key = "12345"
+# key1.date = "140915"
+# key1.complete_key

@@ -33,4 +33,24 @@ class KeyTest < MiniTest::Test
     assert_equal "45", key1.d_position
   end
 
+  def test_that_we_can_calculate_complete_key_for_position_a
+    key1 = Key.new
+    key1.key = "12345"
+    key1.date = "140915"
+    assert_equal "140915", key1.date
+    key1.complete_key
+    assert_equal "19", key1.a_position
+  end
+
+  def test_that_it_can_calculate_a_full_complete_key
+    key1 = Key.new
+    key1.key = "12345"
+    key1.date = "140915"
+    key1.complete_key
+    assert_equal "19", key1.a_position
+    assert_equal "25", key1.b_position
+    assert_equal "36", key1.c_position
+    assert_equal "50", key1.d_position
+  end
+
 end
