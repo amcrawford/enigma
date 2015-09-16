@@ -30,29 +30,36 @@ class EncryptTest < Minitest::Test
     assert_equal [["a", "b", "c", "d"]], expected
   end
 
-
-
-
-
-
-
-
-
-
-  def test_it_can_handle_less_than_4_chars
-    skip
-    secret_message = Encrypt.new("a")
-    assert_equal "t", secret_message.encrypt
+  def test_it_can_encrypt
+    secret_message = Encrypt.new("pear")
+    secret_message.start_key.key = "12012"
+    secret_message.start_key.date = "140915"
+    encrypted_message = secret_message.encrypt_message
+    assert_equal "80d8", encrypted_message
   end
 
+  def test_it_can_encrypt_message_that_is_not_multiples_of_four
+    secret_message = Encrypt.new("amber")
+    secret_message.start_key.key = "12012"
+    secret_message.start_key.date = "140915"
+    encrypted_message = secret_message.encrypt_message
+    assert_equal "t8ev ", encrypted_message
+  end
 
+  def test_it_can_handle_uppercase_letters
+    secret_message = Encrypt.new("Amber")
+    secret_message.start_key.key = "12012"
+    secret_message.start_key.date = "140915"
+    encrypted_message = secret_message.encrypt_message
+    assert_equal "t8ev ", encrypted_message
+  end
 
-
-
-#   Four characters are encrypted at a time.
-# The first character is rotated forward by the "A" rotation plus the "A offset"
-# The second character is rotated forward by the "B" rotation plus the "B offset"
-# The third character is rotated forward by the "C" rotation plus the "C offset"
-# The fourth character is rotated forward by the "D" rotation plus the "D offset"
+  def test_it_can_handle_letters_outside_char_map
+    secret_message = Encrypt.new("Amber!")
+    secret_message.start_key.key = "12012"
+    secret_message.start_key.date = "140915"
+    encrypted_message = secret_message.encrypt_message
+    assert_equal "t8ev !", encrypted_message
+  end
 
 end
