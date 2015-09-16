@@ -2,32 +2,29 @@ require_relative 'key'
 
 class Encrypt
 CHARACTER_MAP = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", " ", ".", ","]
-  attr_reader :start_key
+  attr_reader :character_map, :start_key
+  #have a character map
 
   def initialize
-    @start_key = Key.new
-  end
-
-  def complete_key(date = Time.now.strftime("%d%m%y"), random_key = generate_random_key)
-    @start_key.complete_key(date, random_key)
+    @start_key = Key.complete_key
   end
 
   def split_plain_text(plain_text)
     plain_text.downcase.chars.each_slice(4).to_a
   end
 
-  def encrypt(plain_text, key = @start_key.complete_key)
+  def encrypt(plain_text)
     encrypted_text = ""
     chunks_of_four = split_plain_text(plain_text)
     chunks_of_four.each do |chunk|
-      encrypted_text << rotate(chunk, key)
+      encrypted_text = rotate(chunk).join
     end
     encrypted_text
   end
 
-  def rotate(chunk, key = @start_key.complete_key)
+  def rotate(chunk, key = @start_key)
     encrypted_message = ""
-      chunk.each_with_index do |char, index|
+      array.each_with_index do |char, index|
           current_map = CHARACTER_MAP
           loop do
             current_map = current_map.rotate
@@ -37,9 +34,14 @@ CHARACTER_MAP = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
           encrypted_character = current_map[0]
           encrypted_message << encrypted_character
         end
+      end
       encrypted_message
+      end
     end
     #and then at the same index in the key, rotate through the char map by the rotations at the same index
+  end
+
+
 end
 
 # secret_message = Encrypt.new("a")
