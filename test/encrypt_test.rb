@@ -30,10 +30,19 @@ class EncryptTest < Minitest::Test
     assert_equal [["a", "b", "c", "d"]], expected
   end
 
-  def test_it_can_handle_string_length_that_is_not_factor_of_four
-    secret_message = Encrypt.new("Amber")
-    expected = secret_message.split_plain_text
-    assert_equal [["a", "m", "b", "e"], ["r"]], expected
+
+
+
+
+
+
+
+
+
+  def test_it_can_handle_less_than_4_chars
+    skip
+    secret_message = Encrypt.new("a")
+    assert_equal "t", secret_message.encrypt
   end
 
 

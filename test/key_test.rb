@@ -10,7 +10,6 @@ class KeyTest < MiniTest::Test
   end
 
   def test_keys_for_different_instances_are_not_equal
-    skip
     key1 = Key.new
     key2 = Key.new
     key3 = Key.new
@@ -19,14 +18,12 @@ class KeyTest < MiniTest::Test
   end
 
   def test_it_can_pull_todays_date
-    skip
     # reset to be an actual string
     key1 = Key.new
     assert_equal Time.now.strftime("%d%m%y"), key1.date
   end
 
   def test_that_we_can_calculate_complete_key_for_position_a
-    skip
     key1 = Key.new
     key1.key = "12345"
     key1.date = "140915"
@@ -36,7 +33,6 @@ class KeyTest < MiniTest::Test
   end
 
   def test_that_it_can_calculate_a_full_complete_key
-    skip
     key1 = Key.new
     key1.key = "12345"
     key1.date = "140915"
