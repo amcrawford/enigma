@@ -66,5 +66,5 @@ class Crack
 
 end
 #
-crack = Crack.new("mw,56yqbghbrlh8", "190915")
-p crack.crack
+# crack = Crack.new("mw,v6yqbghbrlh8", "190915")
+# p crack.crack

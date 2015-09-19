@@ -2,11 +2,11 @@ require_relative 'crack'
 
 class FileIO
 
-  def initialize(encrypted_message, output, date)
-    @encrypted_text_string = File.open(ARGV[0]).read
-    @decrypted_msg_without_key = File.open(ARGV[1], 'w')
-    @date = (ARGV[2])
-    @encrypter = Crack.new(encrypted_message, @date)
+  def initialize(input, output, date)
+    @input = File.open(ARGV[0]).read.chomp
+    @output = File.open(ARGV[1], 'w')
+    @date = ARGV[2]
+    @encrypter = Crack.new(@input, @date)
     @key = @encrypter.crack
     puts "Created #{ARGV[1]} with key #{@key} the date #{@date}"
   end
@@ -16,7 +16,7 @@ class FileIO
   end
 
   def write
-    @decrypted_msg_without_key.write(decrypt_text)
+    @output.write(decrypt_text)
   end
 
 end
