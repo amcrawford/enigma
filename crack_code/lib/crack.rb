@@ -72,9 +72,6 @@ class Crack
    middle_key[0] + middle_key[1] + middle_key[3] + middle_key[6] + middle_key[7]
  end
 
-
-
-
 end
 
 #
