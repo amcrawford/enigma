@@ -4,8 +4,8 @@ class Decrypt
 
   attr_accessor :reversed_character_map, :complete_key
 
-  def initialize(encrypted_text, start_key, date)
-    @complete_key = Key.new(start_key, date).complete_key
+  def initialize(encrypted_text, complete_key)
+    @complete_key = complete_key
     @reversed_character_map = [",", ".", " ", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "z", "y", "x", "w", "v", "u", "t", "s", "r", "q", "p", "o", "n", "m", "l", "k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
     @encrypted_text = encrypted_text
   end

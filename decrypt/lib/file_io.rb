@@ -11,7 +11,8 @@ class FileIO
   end
 
   def write
-    decrypter = Decrypt.new(@encrypted_message, @key, @date)
+    complete_key = Key.new(@key, @date).complete_key
+    decrypter = Decrypt.new(@encrypted_message, complete_key)
     final_message = decrypter.decrypt_message
     @plain_message.write(final_message)
   end
