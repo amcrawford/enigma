@@ -1,4 +1,6 @@
 class Crack
+  attr_accessor :encrypted_message
+
   def initialize(message, date)
     @character_map = [",", ".", " ", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "z", "y", "x", "w", "v", "u", "t", "s", "r", "q", "p", "o", "n", "m", "l", "k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a"]
     @encrypted_message = message
@@ -75,6 +77,6 @@ class Crack
 
 end
 
-
+#
 # crack = Crack.new("Amber", "140915")
 # p crack.set_messages_by_remainder

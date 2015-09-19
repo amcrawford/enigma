@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/crack'
+require_relative '../../decrypt/lib/decrypt'
 
 class CrackTest < Minitest::Test
 
@@ -22,18 +23,14 @@ class CrackTest < Minitest::Test
     assert_equal ["19", "22", "3", "17"], result
   end
 
-  def test_it_can_find_middle_key
+  def test_it_can_decrypt_with_an_opperational_key
     message_with_unknown_key = Crack.new("t8ev tpv.bdxxtbpx9gpr", "140915")
-    middle_key = message_with_unknown_key.crack
-    middle_key = message_with_unknown_key.middle_key
-    assert_equal "12200112", middle_key
+    result = message_with_unknown_key.crack
+    decrypt = Decrypt.new(message_with_unknown_key.encrypted_message, "11111", "140915")
+    decrypt.complete_key = result
+    assert_equal "amber message ..end..", decrypt.decrypt_message
   end
 
-  def test_that_it_can_crack_key
-    message_with_unknown_key = Crack.new("t8ev tpv.bdxxtbpx9gpr", "140915")
-    middle_key = message_with_unknown_key.crack
-    middle_key = message_with_unknown_key.calculate_key
-    assert_equal "12012", middle_key
-  end
+
 
 end

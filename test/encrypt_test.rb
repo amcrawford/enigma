@@ -34,6 +34,7 @@ class EncryptTest < Minitest::Test
     secret_message = Encrypt.new("pear")
     secret_message.start_key.key = "12012"
     secret_message.start_key.date = "140915"
+    #
     encrypted_message = secret_message.encrypt_message
     assert_equal "80d8", encrypted_message
   end
