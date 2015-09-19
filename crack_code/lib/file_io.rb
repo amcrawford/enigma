@@ -15,6 +15,7 @@ class FileIO
     final_text = @encrypter.decrypt_file
   end
 
+
   def write
     @output.write(decrypt_text)
   end

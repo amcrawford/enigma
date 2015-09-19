@@ -65,6 +65,7 @@ class Crack
   end
 
 end
+
 #
 # crack = Crack.new("mw,v6yqbghbrlh8", "190915")
 # p crack.crack
