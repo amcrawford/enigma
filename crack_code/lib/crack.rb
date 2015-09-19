@@ -66,5 +66,5 @@ class Crack
 
 end
 #
-# crack = Crack.new("mw,56yq", "190915")
-# p crack.set_messages_by_remainder
+crack = Crack.new("mw,56yqbghbrlh8", "190915")
+p crack.crack
