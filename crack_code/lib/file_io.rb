@@ -1,6 +1,5 @@
 require_relative 'crack'
 require_relative '../../decrypt/lib/decrypt'
-require_relative '../encypted.txt'
 
 class FileIO
 
@@ -8,7 +7,7 @@ class FileIO
     @encrypted_text_string = File.open(ARGV[0]).read
     @decrypted_msg_without_key = File.open(ARGV[1], 'w')
     @date = (ARGV[2])
-    @key = Crack.new(@encrypted_text_string, @date).crack
+    @key = Crack.new(encrypted_message, @date).crack
     @final_text = ""
     puts "Created #{ARGV[1]} with the date #{@date}"
   end

@@ -7,13 +7,14 @@ class FileIO
   def initialize(plain, encrypted)
     @plain_message = File.open(ARGV[0]).read
     @encrypted_message = File.open(ARGV[1], "w")
-    key = Key.new
+    @encrypter = Encrypt.new(@plain_message)
+    key = @encrypter.start_key
     puts "Created '#{ARGV[1]}' with the key #{key.key} and date #{key.date}"
   end
 
   def write
-    encrypter = Encrypt.new(@plain_message).encrypt_message
-    @encrypted_message.write(encrypter)
+    final_text = @encrypter.encrypt_message
+    @encrypted_message.write(final_text)
   end
 end
 

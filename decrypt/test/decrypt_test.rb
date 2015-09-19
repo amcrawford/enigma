@@ -44,4 +44,10 @@ class DecryptTest < Minitest::Test
     assert_equal "amber", secret.decrypt_message
   end
 
+  def test_another_decrypt
+    secret = Decrypt.new("mw,v6yqbghbrlh8" , "40738", "190915")
+    assert_equal "encrypt ..end..", secret.decrypt_message
+  end
+
+
 end

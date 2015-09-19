@@ -62,4 +62,28 @@ class EncryptTest < Minitest::Test
     assert_equal "t8ev !", encrypted_message
   end
 
+  def test_it_can_encrypt_more
+    secret_message = Encrypt.new("..end..")
+    secret_message.start_key.key = "34190"
+    secret_message.start_key.date = "140915"
+    encrypted_message = secret_message.encrypt_message
+    assert_equal "acz4fct", encrypted_message
+  end
+
+  def test_it_can_encrypt_more_again
+    secret_message = Encrypt.new("encrypt ..end..")
+    secret_message.start_key.key = "71293"
+    secret_message.start_key.date = "140915"
+    encrypted_message = secret_message.encrypt_message
+    assert_equal "e17.y3lr.m97dm3", encrypted_message
+  end
+
+  def test_it_can_encrypt_more_again_additionally
+    secret_message = Encrypt.new("encrypt ..end..")
+    secret_message.start_key.key = "40738"
+    secret_message.start_key.date = "140915"
+    encrypted_message = secret_message.encrypt_message
+    assert_equal "mw,v6yqbghbrlh8", encrypted_message
+  end
+
 end
