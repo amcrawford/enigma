@@ -1,3 +1,5 @@
+require_relative '../../decrypt/lib/decrypt'
+
 class Crack
   attr_accessor :encrypted_message
 
@@ -36,6 +38,12 @@ class Crack
     final_message_chunk.reverse.zip(final_known_chunk.reverse)
   end
 
+  def decrypt_file
+    crack
+    decrypter = Decrypt.new(@encrypted_message, @start_key)
+    final_text = decrypter.decrypt_message
+  end
+
 
   def rotate_map(array)
     key = []
@@ -56,24 +64,7 @@ class Crack
     @start_key = key
   end
 
-  # def last_four_of_squared_date
-  #   square = @date.to_i * @date.to_i
-  #   square.to_s[-4..-1].chars
-  # end
-
- #  def middle_key
- #    bucket = @start_key.zip(last_four_of_squared_date).map do |pair|
- #     (pair[0].to_i - pair[1].to_i).to_s.rjust(2, "0")
- #   end
- #   bucket.join
- # end
- #
- # def calculate_key
- #   middle_key[0] + middle_key[1] + middle_key[3] + middle_key[6] + middle_key[7]
- # end
-
 end
-
 #
-# crack = Crack.new("Amber", "140915")
+# crack = Crack.new("mw,56yq", "190915")
 # p crack.set_messages_by_remainder

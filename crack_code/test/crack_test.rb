@@ -25,12 +25,7 @@ class CrackTest < Minitest::Test
 
   def test_it_can_decrypt_with_an_opperational_key
     message_with_unknown_key = Crack.new("t8ev tpv.bdxxtbpx9gpr", "140915")
-    result = message_with_unknown_key.crack
-    decrypt = Decrypt.new(message_with_unknown_key.encrypted_message, "11111", "140915")
-    decrypt.complete_key = result
-    assert_equal "amber message ..end..", decrypt.decrypt_message
+    assert_equal "amber message ..end..", message_with_unknown_key.decrypt_file
   end
-
-
 
 end
