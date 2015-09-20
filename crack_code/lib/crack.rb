@@ -20,20 +20,20 @@ class Crack
   end
 
   def set_messages_by_remainder
-    popped_message_array = @encrypted_message.chars
-    popped_message_array.pop(found_remainder)
+    popped_message = @encrypted_message.chars
+    popped_message.pop(found_remainder)
     final_message_chunk = []
 
     4.times do |i|
-      final_message_chunk << (popped_message_array[-1 - i])
+      final_message_chunk << (popped_message[-1 - i])
     end
 
-    popped_known_array = @known_string.chars
-    popped_known_array.pop(found_remainder)
+    popped_known = @known_string.chars
+    popped_known.pop(found_remainder)
     final_known_chunk = []
 
     4.times do |i|
-      final_known_chunk << (popped_known_array[-1 - i])
+      final_known_chunk << (popped_known[-1 - i])
     end
     final_message_chunk.reverse.zip(final_known_chunk.reverse)
   end
